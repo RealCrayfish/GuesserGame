@@ -8,6 +8,7 @@
 #include "ftxui/component/component.hpp"
 #include "ftxui/component/component_base.hpp"
 #include "ftxui/component/screen_interactive.hpp"
+#include "ftxui/screen/screen.hpp"
 #include "ftxui/dom/elements.hpp"
 
 using namespace std;
@@ -24,32 +25,42 @@ auto logo = vbox({
     });
 
 // Exit Game Code
-int exitGame() {
-    auto screen = ScreenInteractive::FitComponent();
+int exitGame(void) {
 
-    auto component = Renderer([&] {
+    auto screen = ScreenInteractive::FitComponent();
+    auto exitAction = [&] { exit(EXIT_SUCCESS); };
+
+    auto buttons = Container::Vertical({
+        Button("Exit Game", exitAction, ButtonOption::Animated(Color::Red)),
+        });
+
+    auto component = Renderer(buttons, [&] {
         return vbox({
                 logo,
+                separator(),
+                text("Thanks For Playing! Press the button to Exit."),
+                separator(),
+                buttons->Render(),
             }) |
             border;
         });
-
     screen.Loop(component);
 
-    return 0;
+    exit(EXIT_SUCCESS);
 }
 
 // Run Game
 int main()
 {
+    auto screen = ScreenInteractive::FitComponent();
     int value = 50;
     auto action = [&] { value++; };
 
     auto buttons = Container::Vertical({
-        Button("New Game", action, ButtonOption::Animated()),
-        Button("Scoreboard", action, ButtonOption::Animated()),
-        Button("Credits", action, ButtonOption::Animated()),
-        Button("Exit Game", exitGame, ButtonOption::Animated()),
+        Button("New Game", action, ButtonOption::Animated(Color::Green)),
+        Button("Scoreboard", action, ButtonOption::Animated(Color::Blue)),
+        Button("Credits", action, ButtonOption::Animated(Color::GrayLight)),
+        Button("Exit Game", exitGame, ButtonOption::Animated(Color::Red)),
     });
 
     auto component = Renderer(buttons, [&] {
@@ -60,8 +71,6 @@ int main()
             }) |
             border;
         });
-
-    auto screen = ScreenInteractive::FitComponent();
     screen.Loop(component);
 
     return EXIT_SUCCESS;
