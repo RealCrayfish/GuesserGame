@@ -1,0 +1,3 @@
+D:/MY STUFF/Code/CPP/GuesserGame/out/build/x64-debug/_deps/ftxui-subbuild/CMakeFiles/ftxui-populate.dir
+D:/MY STUFF/Code/CPP/GuesserGame/out/build/x64-debug/_deps/ftxui-subbuild/CMakeFiles/edit_cache.dir
+D:/MY STUFF/Code/CPP/GuesserGame/out/build/x64-debug/_deps/ftxui-subbuild/CMakeFiles/rebuild_cache.dir

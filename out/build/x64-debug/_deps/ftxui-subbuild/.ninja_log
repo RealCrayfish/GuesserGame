@@ -1,0 +1,19 @@
+# ninja log v5
+1	160	6719283840610326	ftxui-populate-prefix/src/ftxui-populate-stamp/ftxui-populate-mkdir	a4cd42bb90d2f92b
+1	160	6719283840610326	D:/MY STUFF/Code/CPP/GuesserGame/out/build/x64-debug/_deps/ftxui-subbuild/ftxui-populate-prefix/src/ftxui-populate-stamp/ftxui-populate-mkdir	a4cd42bb90d2f92b
+160	6682	6719283905824960	ftxui-populate-prefix/src/ftxui-populate-stamp/ftxui-populate-download	4f88acfe37dda144
+160	6682	6719283905824960	D:/MY STUFF/Code/CPP/GuesserGame/out/build/x64-debug/_deps/ftxui-subbuild/ftxui-populate-prefix/src/ftxui-populate-stamp/ftxui-populate-download	4f88acfe37dda144
+6682	6729	6719283906303681	ftxui-populate-prefix/src/ftxui-populate-stamp/ftxui-populate-patch	8888bfa47e30204c
+6682	6729	6719283906303681	D:/MY STUFF/Code/CPP/GuesserGame/out/build/x64-debug/_deps/ftxui-subbuild/ftxui-populate-prefix/src/ftxui-populate-stamp/ftxui-populate-patch	8888bfa47e30204c
+6729	6773	6719283906739902	ftxui-populate-prefix/src/ftxui-populate-stamp/ftxui-populate-configure	df0235061bafaf98
+6729	6773	6719283906739902	D:/MY STUFF/Code/CPP/GuesserGame/out/build/x64-debug/_deps/ftxui-subbuild/ftxui-populate-prefix/src/ftxui-populate-stamp/ftxui-populate-configure	df0235061bafaf98
+6773	6823	6719283907233258	ftxui-populate-prefix/src/ftxui-populate-stamp/ftxui-populate-build	d14caa5f6b21f7d3
+6773	6823	6719283907233258	D:/MY STUFF/Code/CPP/GuesserGame/out/build/x64-debug/_deps/ftxui-subbuild/ftxui-populate-prefix/src/ftxui-populate-stamp/ftxui-populate-build	d14caa5f6b21f7d3
+6823	6873	6719283907738894	ftxui-populate-prefix/src/ftxui-populate-stamp/ftxui-populate-install	215142df001ebd68
+6823	6873	6719283907738894	D:/MY STUFF/Code/CPP/GuesserGame/out/build/x64-debug/_deps/ftxui-subbuild/ftxui-populate-prefix/src/ftxui-populate-stamp/ftxui-populate-install	215142df001ebd68
+6873	6917	6719283908187695	ftxui-populate-prefix/src/ftxui-populate-stamp/ftxui-populate-test	884a71d3127b42da
+6873	6917	6719283908187695	D:/MY STUFF/Code/CPP/GuesserGame/out/build/x64-debug/_deps/ftxui-subbuild/ftxui-populate-prefix/src/ftxui-populate-stamp/ftxui-populate-test	884a71d3127b42da
+6918	6982	6719283908830861	CMakeFiles/ftxui-populate-complete	b11c50dd53cfe955
+6918	6982	6719283908830861	ftxui-populate-prefix/src/ftxui-populate-stamp/ftxui-populate-done	b11c50dd53cfe955
+6918	6982	6719283908830861	D:/MY STUFF/Code/CPP/GuesserGame/out/build/x64-debug/_deps/ftxui-subbuild/CMakeFiles/ftxui-populate-complete	b11c50dd53cfe955
+6918	6982	6719283908830861	D:/MY STUFF/Code/CPP/GuesserGame/out/build/x64-debug/_deps/ftxui-subbuild/ftxui-populate-prefix/src/ftxui-populate-stamp/ftxui-populate-done	b11c50dd53cfe955

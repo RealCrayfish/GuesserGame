@@ -1,0 +1,13 @@
+# Target labels
+ ftxui-populate
+# Source files and their labels
+D:/MY STUFF/Code/CPP/GuesserGame/out/build/x64-debug/_deps/ftxui-subbuild/CMakeFiles/ftxui-populate
+D:/MY STUFF/Code/CPP/GuesserGame/out/build/x64-debug/_deps/ftxui-subbuild/CMakeFiles/ftxui-populate.rule
+D:/MY STUFF/Code/CPP/GuesserGame/out/build/x64-debug/_deps/ftxui-subbuild/CMakeFiles/ftxui-populate-complete.rule
+D:/MY STUFF/Code/CPP/GuesserGame/out/build/x64-debug/_deps/ftxui-subbuild/ftxui-populate-prefix/src/ftxui-populate-stamp/ftxui-populate-build.rule
+D:/MY STUFF/Code/CPP/GuesserGame/out/build/x64-debug/_deps/ftxui-subbuild/ftxui-populate-prefix/src/ftxui-populate-stamp/ftxui-populate-configure.rule
+D:/MY STUFF/Code/CPP/GuesserGame/out/build/x64-debug/_deps/ftxui-subbuild/ftxui-populate-prefix/src/ftxui-populate-stamp/ftxui-populate-download.rule
+D:/MY STUFF/Code/CPP/GuesserGame/out/build/x64-debug/_deps/ftxui-subbuild/ftxui-populate-prefix/src/ftxui-populate-stamp/ftxui-populate-install.rule
+D:/MY STUFF/Code/CPP/GuesserGame/out/build/x64-debug/_deps/ftxui-subbuild/ftxui-populate-prefix/src/ftxui-populate-stamp/ftxui-populate-mkdir.rule
+D:/MY STUFF/Code/CPP/GuesserGame/out/build/x64-debug/_deps/ftxui-subbuild/ftxui-populate-prefix/src/ftxui-populate-stamp/ftxui-populate-patch.rule
+D:/MY STUFF/Code/CPP/GuesserGame/out/build/x64-debug/_deps/ftxui-subbuild/ftxui-populate-prefix/src/ftxui-populate-stamp/ftxui-populate-test.rule
