@@ -19,7 +19,7 @@ set(CPACK_DEBIAN_PACKAGE_HOMEPAGE_URL "https://github.com/ArthurSonzogni/FTXUI/"
 set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Arthur Sonzogni")
 set(CPACK_DEBIAN_PACKAGE_VERSION "3.0.0")
 set(CPACK_DEFAULT_PACKAGE_DESCRIPTION_FILE "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.22/Templates/CPack.GenericDescription.txt")
-set(CPACK_DEFAULT_PACKAGE_DESCRIPTION_SUMMARY "GuesserGame built using CMake")
+set(CPACK_DEFAULT_PACKAGE_DESCRIPTION_SUMMARY "ftxui built using CMake")
 set(CPACK_GENERATOR "7Z;ZIP")
 set(CPACK_IGNORE_FILES "/CVS/;/\\.svn/;/\\.bzr/;/\\.hg/;/\\.git/;\\.swp\$;\\.#;/#")
 set(CPACK_INSTALLED_DIRECTORIES "D:/MY STUFF/Code/CPP/GuesserGame;/")

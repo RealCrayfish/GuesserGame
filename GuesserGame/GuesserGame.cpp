@@ -31,7 +31,7 @@ int exitGame(void) {
     auto exitAction = [&] { exit(EXIT_SUCCESS); };
 
     auto buttons = Container::Vertical({
-        Button("Exit Game", exitAction, ButtonOption::Animated(Color::Red)),
+        Button("Exit Game", exitAction, ButtonOption::Animated()),
         });
 
     auto component = Renderer(buttons, [&] {
@@ -49,6 +49,32 @@ int exitGame(void) {
     exit(EXIT_SUCCESS);
 }
 
+// Credits Code // Needs Fixing
+int credits(void) {
+
+    auto screen = ScreenInteractive::FitComponent();
+    auto creditAction = [&] { screen.ExitLoopClosure(); };
+
+    auto buttons = Container::Vertical({
+        Button("Exit Game", creditAction, ButtonOption::Animated()),
+        });
+
+    auto component = Renderer(buttons, [&] {
+        return vbox({
+                logo,
+                separator(),
+                text("Credits:"),
+                separator(),
+                buttons->Render(),
+            }) |
+            border;
+        });
+
+    screen.Loop(component);
+
+    return 0;
+}
+
 // Run Game
 int main()
 {
@@ -57,10 +83,10 @@ int main()
     auto action = [&] { value++; };
 
     auto buttons = Container::Vertical({
-        Button("New Game", action, ButtonOption::Animated(Color::Green)),
-        Button("Scoreboard", action, ButtonOption::Animated(Color::Blue)),
-        Button("Credits", action, ButtonOption::Animated(Color::GrayLight)),
-        Button("Exit Game", exitGame, ButtonOption::Animated(Color::Red)),
+        Button("New Game", action, ButtonOption::Animated()),
+        Button("Scoreboard", action, ButtonOption::Animated()),
+        Button("Credits", credits, ButtonOption::Animated()),
+        Button("Exit Game", exitGame, ButtonOption::Animated()),
     });
 
     auto component = Renderer(buttons, [&] {
