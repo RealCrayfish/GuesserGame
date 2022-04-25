@@ -7,21 +7,16 @@ using namespace std;
 using json = nlohmann::json;
 namespace fs = filesystem;
 
-// Variables
+// PACK Functions
 
-string pack;
-
-// THIS MUST STAY AT THE TOP
-void loadPACK() {
-	ifstream packDATA("assets/test.txt");
-	getline(packDATA, pack);
-}
-
-void setPACK() { }
-
-void loadOPTIONS() {
-	loadPACK();
-	ifstream optionFile("assets/" + pack + "/data/options.rcf");
-	auto options = json::parse(optionFile);
-	cout << options["numRange"]["min"];
+void genPACK() {
+	string pack;
+	cout << "PACK NAME: ";
+	getline(cin, pack);
+	// Gen directories.
+	fs::create_directories("assets/" + pack + "/data");
+	fs::create_directories("assets/" + pack + "/resources/lang");
+	// Gen data.
+	ofstream optionsFile("assets/" + pack + "/data/options.rcf");
+	optionsFile.write("{\"numRange\": {\"min\": 1, \"max\": 10}}");
 }
