@@ -7,3 +7,5 @@
 
 
 // Functions
+
+void genPACK();
