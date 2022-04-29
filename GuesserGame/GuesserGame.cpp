@@ -4,6 +4,7 @@
 
 using namespace std;
 using namespace chrono;
+using json = nlohmann::json;
 
 /* GUESSERGAME */
 
@@ -46,12 +47,23 @@ class ASCII {
 
 /* MODULES */
 
-
+class Score {
+	public:
+		void save() {}
+		void remove() {}
+		void board() {
+			ifstream scoreFile("assets/scoreboard.rcf");
+			json scores = json::parse(scoreFile);
+			cout << scores[0];
+			sleep(3);
+		}
+};
 
 /* MENUS */
 
 void mainMenu() {
 	ASCII ASCII;
+	Score Score;
 	
 	clear();
 	ASCII.gameLogo();
@@ -72,6 +84,7 @@ void mainMenu() {
 	case 's':
 		cout << "SCOREBOARD";
 		sleep(1);
+		Score.board();
 		break;
 	case 'e':
 		clear();
