@@ -10,7 +10,6 @@
 #include <chrono>
 #include <thread>
 #include "lib/json.hpp"
+#include <conio.h>
 
 // Custom Files.
-
-#include "assets.h" // All assets type items must pass through this file.
