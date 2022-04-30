@@ -31,6 +31,17 @@ class ASCII {
 			cout << "\n\n";
 		}
 
+		void scoreLogo() {
+			cout << "\n";
+			cout << "   _____                    _                         _ " << endl;
+			cout << "  / ____|                  | |                       | |" << endl;
+			cout << " | (___   ___ ___  _ __ ___| |__   ___   __ _ _ __ __| |" << endl;
+			cout << "  \\___ \\ / __/ _ \\| '__/ _ \\ '_ \\ / _ \\ / _` | '__/ _` |" << endl;
+			cout << "  ____) | (_| (_) | | |  __/ |_) | (_) | (_| | | | (_| |" << endl;
+			cout << " |_____/ \\___\\___/|_|  \\___|_.__/ \\___/ \\__,_|_|  \\__,_|" << endl;
+			cout << "\n\n";
+		}
+
 		void exitLogo() {
 			cout << "\n";
 			cout << "  _______ _                 _          ______           _____  _             _             " << endl;
@@ -48,18 +59,42 @@ class ASCII {
 /* MODULES */
 
 class Score {
+	ASCII ASCII;
 	public:
-		void save() {}
-		void remove() {}
+		void save() {
+			ifstream scoreIfFile("assets/scoreboard.rcf"); json scores = json::parse(scoreIfFile); scoreIfFile.close();
+
+			ofstream scoreOfFile("assets/scoreboard.rcf"); ; scoreOfFile.close();
+		}
+		void remove(int id) {
+			ifstream scoreIfFile("assets/scoreboard.rcf"); json scores = json::parse(scoreIfFile); scoreIfFile.close();
+			ofstream scoreOfFile("assets/scoreboard.rcf"); scores.erase(id); scoreOfFile.close();
+		}
 		void board() {
-			ifstream scoreFile("assets/scoreboard.rcf");
-			json scores = json::parse(scoreFile);
-			cout << scores[0];
-			sleep(3);
+			ifstream scoreFile("assets/scoreboard.rcf"); json scores = json::parse(scoreFile); scoreFile.close();
+			string hold;
+
+			clear();
+			ASCII.scoreLogo();
+
+			sleep(1);
+			for (int i = 0; i < size(scores); i++) {
+				hold = scores[i]["username"];
+				cout << "   " << hold << "     " << scores[i]["score"] << endl << endl;
+				sleep(1);
+			}
+
+			cout << "   Press any key to continue...";
+			save();
+			getch();
 		}
 };
 
 /* MENUS */
+
+void devMenu() {
+
+}
 
 void mainMenu() {
 	ASCII ASCII;
@@ -82,8 +117,6 @@ void mainMenu() {
 		sleep(1);
 		break;
 	case 's':
-		cout << "SCOREBOARD";
-		sleep(1);
 		Score.board();
 		break;
 	case 'e':
@@ -100,10 +133,6 @@ void mainMenu() {
 		sleep(1);
 		break;
 	}
-}
-
-void devMenu() {
-
 }
 
 /* APP */

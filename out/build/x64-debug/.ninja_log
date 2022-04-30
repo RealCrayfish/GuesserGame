@@ -1,9 +1,10 @@
 # ninja log v5
-1	1776	6729775694751363	GuesserGame/CMakeFiles/GuesserGame.dir/GuesserGame.cpp.obj	ab91ea4a5c6d482
-1778	2430	6729775700687126	GuesserGame/GuesserGame.exe	59758e9cf88f210
-0	1973	6729776872994996	GuesserGame/CMakeFiles/GuesserGame.dir/GuesserGame.cpp.obj	ab91ea4a5c6d482
-1974	2385	6729776876045384	GuesserGame/GuesserGame.exe	59758e9cf88f210
-1	1706	6729777970733788	GuesserGame/CMakeFiles/GuesserGame.dir/GuesserGame.cpp.obj	ab91ea4a5c6d482
-1706	2041	6729777973406629	GuesserGame/GuesserGame.exe	59758e9cf88f210
-0	1689	6729778169367308	GuesserGame/CMakeFiles/GuesserGame.dir/GuesserGame.cpp.obj	ab91ea4a5c6d482
-1690	2020	6729778172020235	GuesserGame/GuesserGame.exe	59758e9cf88f210
+0	2818	6730368212005659	GuesserGame/CMakeFiles/GuesserGame.dir/GuesserGame.cpp.obj	ab91ea4a5c6d482
+2818	3534	6730368217640962	GuesserGame/GuesserGame.exe	59758e9cf88f210
+0	10	0	clean	8c45b54705a541e8
+0	2316	6730434533403759	GuesserGame/CMakeFiles/GuesserGame.dir/GuesserGame.cpp.obj	ab91ea4a5c6d482
+2317	3203	6730434539067628	GuesserGame/GuesserGame.exe	59758e9cf88f210
+0	2227	6730435324974943	GuesserGame/CMakeFiles/GuesserGame.dir/GuesserGame.cpp.obj	ab91ea4a5c6d482
+2228	2590	6730435327964598	GuesserGame/GuesserGame.exe	59758e9cf88f210
+0	2067	6730435648063854	GuesserGame/CMakeFiles/GuesserGame.dir/GuesserGame.cpp.obj	ab91ea4a5c6d482
+2068	2422	6730435651006841	GuesserGame/GuesserGame.exe	59758e9cf88f210
