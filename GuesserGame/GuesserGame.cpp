@@ -8,12 +8,28 @@ using json = nlohmann::json;
 
 /* GUESSERGAME */
 
+int MIN;
+int MAX;
+
+int score;
+
 void clear() {
 	system("cls");
 }
 
 void sleep(int time) {
 	this_thread::sleep_for(seconds(time));
+}
+
+// Options
+
+void loadOptions() {
+	ifstream optionsIfFile("assets/options.rcf");
+	json options = json::parse(optionsIfFile);
+	optionsIfFile.close();
+	
+	MIN = options["numRange"]["min"];
+	MAX = options["numRange"]["max"];
 }
 
 // ASCII Art
@@ -58,6 +74,94 @@ class ASCII {
 
 /* MODULES */
 
+class Game {
+	ASCII ASCII;
+	public:
+		void nextGuess() {
+			int cAns = rand() % MAX + MIN;
+			int points = 10;
+
+			while (bool hold = true) {
+				clear();
+				ASCII.gameLogo();
+
+				cout << "\n";
+				cout << "   Guess a number between " << MIN << " and " << MAX << endl << endl << "   ";
+
+				string uString;
+				getline(cin, uString);
+				int uAns = stoi(uString);
+
+				if (uAns == cAns) {
+					clear();
+					ASCII.gameLogo();
+					score += points;
+					cout << "\n";
+					cout << "   Correct! +" << points << " points" << endl;
+					sleep(3);
+					hold = false;
+					break;
+				}
+				else {
+					if (points > 0) {
+						points--;
+					}
+					clear();
+					ASCII.gameLogo();
+					cout << "\n";
+					cout << "   Incorrect. Try again.";
+					sleep(1);
+				}
+
+				sleep(3);
+			}
+		}
+		void newGame() {
+			clear();
+			ASCII.gameLogo();
+			score = 0;
+
+			cout << "\n";
+			cout << "   Enter Your Initials:\n" << endl;
+			char charInitials;
+			string initials;
+
+			charInitials = toupper(getch());
+			cout << "      " << charInitials;
+			initials += toupper(charInitials);
+
+			charInitials = toupper(getch());
+			cout << charInitials;
+			initials += toupper(charInitials);
+
+			charInitials = toupper(getch());
+			cout << charInitials;
+			initials += toupper(charInitials);
+
+			sleep(3);
+			clear();
+			ASCII.gameLogo();
+
+			cout << "\n";
+			cout << "   How To Play:\n" << endl;
+			cout << "      You have to guess a number between " << MIN << " and " << MAX << "for 10 rounds." << endl;
+			cout << "      For each round, you have the chance to earn up to 10 points." << endl;
+			cout << "      Your goal is to aim for 100 points.\n" << endl;
+		
+			cout << "  Press any key to continue...";
+			getch();
+
+			for (int i = 0; i < 10; i++) {
+				nextGuess();
+			}
+
+			clear();
+			ASCII.gameLogo();
+			cout << "\n";
+			sleep(5);
+		}
+};
+
 class Score {
 	ASCII ASCII;
 	public:
@@ -86,7 +190,6 @@ class Score {
 			}
 
 			cout << "   Press any key to continue...";
-			save("abcd", 1234);
 			getch();
 		}
 };
@@ -98,6 +201,7 @@ void devMenu() {
 }
 
 void mainMenu() {
+	Game Game;
 	ASCII ASCII;
 	Score Score;
 	
@@ -114,8 +218,7 @@ void mainMenu() {
 	switch (uChoice)
 	{
 	case 'p':
-		cout << "NEW GAME";
-		sleep(1);
+		Game.newGame();
 		break;
 	case 's':
 		Score.board();
@@ -126,6 +229,9 @@ void mainMenu() {
 		sleep(1);
 		clear();
 		exit(EXIT_SUCCESS);
+		break;
+	case 'd':
+		devMenu();
 		break;
 	default:
 		clear();
@@ -141,6 +247,8 @@ void mainMenu() {
 // App entry point.
 
 int main() {
+	loadOptions();
+
 	while (true) {
 		mainMenu();
 	}

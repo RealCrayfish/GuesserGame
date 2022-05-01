@@ -11,5 +11,6 @@
 #include <thread>
 #include "lib/json.hpp"
 #include <conio.h>
+#include <map>
 
 // Custom Files.
