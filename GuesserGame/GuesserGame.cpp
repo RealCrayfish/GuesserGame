@@ -61,10 +61,11 @@ class ASCII {
 class Score {
 	ASCII ASCII;
 	public:
-		void save() {
+		void save(string username, int score) {
 			ifstream scoreIfFile("assets/scoreboard.rcf"); json scores = json::parse(scoreIfFile); scoreIfFile.close();
-
-			ofstream scoreOfFile("assets/scoreboard.rcf"); ; scoreOfFile.close();
+			string insertJSON = "";
+			scores.insert(scores.end(), json::parse("{\"username\": \"" + username + "\", \"score\": " + to_string(score) + " }"));
+			ofstream scoreOfFile("assets/scoreboard.rcf"); scoreOfFile << scores.dump(4); scoreOfFile.close();
 		}
 		void remove(int id) {
 			ifstream scoreIfFile("assets/scoreboard.rcf"); json scores = json::parse(scoreIfFile); scoreIfFile.close();
@@ -85,7 +86,7 @@ class Score {
 			}
 
 			cout << "   Press any key to continue...";
-			save();
+			save("abcd", 1234);
 			getch();
 		}
 };

@@ -1,10 +1,10 @@
 [
-	{
-		"username": "UMR",
-		"score": 100
-	},
-	{
-		"username": "TSF",
-		"score": 99
-	}
+    {
+        "score": 100,
+        "username": "UMR"
+    },
+    {
+        "score": 99,
+        "username": "TSF"
+    }
 ]
