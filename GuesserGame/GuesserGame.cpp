@@ -74,8 +74,41 @@ class ASCII {
 
 /* MODULES */
 
+class Score {
+	ASCII ASCII;
+public:
+	void save(string username, int score) {
+		ifstream scoreIfFile("assets/scoreboard.rcf"); json scores = json::parse(scoreIfFile); scoreIfFile.close();
+		string insertJSON = "";
+		scores.insert(scores.end(), json::parse("{\"username\": \"" + username + "\", \"score\": " + to_string(score) + " }"));
+		ofstream scoreOfFile("assets/scoreboard.rcf"); scoreOfFile << scores.dump(4); scoreOfFile.close();
+	}
+	void remove(int id) {
+		ifstream scoreIfFile("assets/scoreboard.rcf"); json scores = json::parse(scoreIfFile); scoreIfFile.close();
+		ofstream scoreOfFile("assets/scoreboard.rcf"); scores.erase(id); scoreOfFile.close();
+	}
+	void board() {
+		ifstream scoreFile("assets/scoreboard.rcf"); json scores = json::parse(scoreFile); scoreFile.close();
+		string hold;
+
+		clear();
+		ASCII.scoreLogo();
+
+		sleep(1);
+		for (int i = 0; i < size(scores); i++) {
+			hold = scores[i]["username"];
+			cout << "   " << hold << "     " << scores[i]["score"] << endl << endl;
+			sleep(1);
+		}
+
+		cout << "   Press any key to continue...";
+		getch();
+	}
+};
+
 class Game {
 	ASCII ASCII;
+	Score Score;
 	public:
 		void nextGuess() {
 			int cAns = rand() % MAX + MIN;
@@ -148,7 +181,7 @@ class Game {
 			cout << "      For each round, you have the chance to earn up to 10 points." << endl;
 			cout << "      Your goal is to aim for 100 points.\n" << endl;
 		
-			cout << "  Press any key to continue...";
+			cout << "   Press any key to continue...";
 			getch();
 
 			for (int i = 0; i < 10; i++) {
@@ -158,39 +191,26 @@ class Game {
 			clear();
 			ASCII.gameLogo();
 			cout << "\n";
-			sleep(5);
-		}
-};
+			cout << "   Final Score: " << score << endl << endl;
+			cout << "   Would you like to save your score? (Y/N)" << endl;
+			char saveScore = getch();
 
-class Score {
-	ASCII ASCII;
-	public:
-		void save(string username, int score) {
-			ifstream scoreIfFile("assets/scoreboard.rcf"); json scores = json::parse(scoreIfFile); scoreIfFile.close();
-			string insertJSON = "";
-			scores.insert(scores.end(), json::parse("{\"username\": \"" + username + "\", \"score\": " + to_string(score) + " }"));
-			ofstream scoreOfFile("assets/scoreboard.rcf"); scoreOfFile << scores.dump(4); scoreOfFile.close();
-		}
-		void remove(int id) {
-			ifstream scoreIfFile("assets/scoreboard.rcf"); json scores = json::parse(scoreIfFile); scoreIfFile.close();
-			ofstream scoreOfFile("assets/scoreboard.rcf"); scores.erase(id); scoreOfFile.close();
-		}
-		void board() {
-			ifstream scoreFile("assets/scoreboard.rcf"); json scores = json::parse(scoreFile); scoreFile.close();
-			string hold;
-
-			clear();
-			ASCII.scoreLogo();
-
-			sleep(1);
-			for (int i = 0; i < size(scores); i++) {
-				hold = scores[i]["username"];
-				cout << "   " << hold << "     " << scores[i]["score"] << endl << endl;
-				sleep(1);
+			if (tolower(saveScore) == 'y') {
+				clear();
+				ASCII.gameLogo();
+				cout << "\n";
+				Score.save(initials, score);
+				cout << "   Score Saved! Returning to Main Menu...";
+				sleep(3);
 			}
-
-			cout << "   Press any key to continue...";
-			getch();
+			else {
+				clear();
+				ASCII.gameLogo();
+				cout << "\n";
+				cout << "   Score Discarded. Returning to Main Menu...";
+				sleep(3);
+			}
+			sleep(5);
 		}
 };
 
