@@ -90,7 +90,6 @@ class Score {
 public:
 	void save(string username, int score) {
 		ifstream scoreIfFile("assets/scoreboard.rcf"); json scores = json::parse(scoreIfFile); scoreIfFile.close();
-		string insertJSON = "";
 		scores.insert(scores.end(), json::parse("{\"username\": \"" + username + "\", \"score\": " + to_string(score) + " }"));
 		ofstream scoreOfFile("assets/scoreboard.rcf"); scoreOfFile << scores.dump(4); scoreOfFile.close();
 	}
@@ -217,50 +216,101 @@ class Game {
 		}
 };
 
-/* MENUS */
+/* DEV MODE */
 
-void devMenu() {
+class Dev {
 	ASCII ASCII;
-	Score Score;
 
-	while (bool hold = true) {
-		clear();
-		ASCII.devLogo();
-
-		cout << "   P: New Game\n";
-		cout << "   S: Scoreboard\n";
-		cout << "   E: Exit Game\n";
-
-		cout << "\n";
-		char uChoice = getch();
-
-		switch (uChoice)
-		{
-		case 'p':
-			break;
-		case 's':
-			break;
-		case 'e':
+	public:
+		void numRange() {
+			ifstream optionsIfFile("assets/options.rcf"); json devOptions = json::parse(optionsIfFile); optionsIfFile.close();
+			
 			clear();
 			ASCII.devLogo();
-			hold = false;
-			cout << "   Returning to Main Menu...";
-			sleep(3);
-			break;
-		default:
+			cout << "   Enter new minimum number:\n\n   ";
+			string newStringMin;
+			getline(cin, newStringMin);
+			devOptions["numRange"]["min"] = stoi(newStringMin);
+
 			clear();
 			ASCII.devLogo();
-			cout << "   Invalid Option. Try Again";
-			sleep(1);
-			break;
+			cout << "   Enter new maximum number:\n\n   ";
+			string newStringMax;
+			getline(cin, newStringMax);
+			devOptions["numRange"]["max"] = stoi(newStringMax);
+
+			ofstream optionsOfFile("assets/options.rcf"); optionsOfFile << devOptions.dump(4); optionsOfFile.close();
 		}
-	}
-}
+		void scoreboard() {
+			ifstream scoreFile("assets/scoreboard.rcf"); json devScores = json::parse(scoreFile); scoreFile.close();
+			string hold;
+
+			clear();
+			ASCII.scoreLogo();
+
+			sleep(1);
+			for (int i = 0; i < size(devScores); i++) {
+				hold = devScores[i]["username"];
+				cout << "   " << hold << "      " << devScores[i]["score"] << "      ID: " << i << endl << endl;
+				sleep(1);
+			}
+
+			cout << "   Enter ID to remove or any non-ID number to cancel\n\n   ";
+			string strID;
+			getline(cin, strID);
+			int ID = stoi(strID);
+
+			auto test = devScores[ID];
+			test.erase("score");
+		}
+
+		void devMenu() {
+
+			while (bool hold = true) {
+				clear();
+				ASCII.devLogo();
+
+				cout << "   N: Number Range\n";
+				cout << "   S: Scoreboard\n";
+				cout << "   E: Exit Dev Mode\n";
+
+				cout << "\n";
+				char uChoice = tolower(getch());
+
+				switch (uChoice)
+				{
+				case 'n':
+					numRange();
+					break;
+				case 's':
+					scoreboard();
+					break;
+				case 'e':
+					clear();
+					ASCII.devLogo();
+					hold = false;
+					cout << "   Returning to Main Menu...";
+					sleep(3);
+					return;
+					break;
+				default:
+					clear();
+					ASCII.devLogo();
+					cout << "   Invalid Option. Try Again";
+					sleep(1);
+					break;
+				}
+			}
+		}
+};
+
+/* MAIN MENU */
 
 void mainMenu() {
 	Game Game;
 	ASCII ASCII;
 	Score Score;
+	Dev Dev;
 	
 	clear();
 	ASCII.gameLogo();
@@ -270,7 +320,7 @@ void mainMenu() {
 	cout << "   E: Exit Game\n";
 
 	cout << "\n";
-	char uChoice = getch();
+	char uChoice = tolower(getch());
 
 	switch (uChoice)
 	{
@@ -288,7 +338,7 @@ void mainMenu() {
 		exit(EXIT_SUCCESS);
 		break;
 	case 'd':
-		devMenu();
+		Dev.devMenu();
 		break;
 	default:
 		clear();
