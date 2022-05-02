@@ -70,6 +70,17 @@ class ASCII {
 			cout << "                                                                       |___/         |___/ " << endl;
 			cout << "\n\n";
 		}
+
+		void devLogo() {
+			cout << "\n";
+			cout << "  _____               __  __           _      " << endl;
+			cout << " |  __ \\             |  \\/  |         | |     " << endl;
+			cout << " | |  | | _____   __ | \\  / | ___   __| | ___ " << endl;
+			cout << " | |  | |/ _ \\ \\ / / | |\\/| |/ _ \\ / _` |/ _ \\" << endl;
+			cout << " | |__| |  __/\\ V /  | |  | | (_) | (_| |  __/" << endl;
+			cout << " |_____/ \\___| \\_/   |_|  |_|\\___/ \\__,_|\\___|" << endl;
+			cout << "\n\n";
+		}
 };
 
 /* MODULES */
@@ -118,7 +129,6 @@ class Game {
 				clear();
 				ASCII.gameLogo();
 
-				cout << "\n";
 				cout << "   Guess a number between " << MIN << " and " << MAX << endl << endl << "   ";
 
 				string uString;
@@ -129,7 +139,6 @@ class Game {
 					clear();
 					ASCII.gameLogo();
 					score += points;
-					cout << "\n";
 					cout << "   Correct! +" << points << " points" << endl;
 					sleep(3);
 					hold = false;
@@ -141,7 +150,6 @@ class Game {
 					}
 					clear();
 					ASCII.gameLogo();
-					cout << "\n";
 					cout << "   Incorrect. Try again.";
 					sleep(1);
 				}
@@ -154,7 +162,6 @@ class Game {
 			ASCII.gameLogo();
 			score = 0;
 
-			cout << "\n";
 			cout << "   Enter Your Initials:\n" << endl;
 			char charInitials;
 			string initials;
@@ -175,7 +182,6 @@ class Game {
 			clear();
 			ASCII.gameLogo();
 
-			cout << "\n";
 			cout << "   How To Play:\n" << endl;
 			cout << "      You have to guess a number between " << MIN << " and " << MAX << "for 10 rounds." << endl;
 			cout << "      For each round, you have the chance to earn up to 10 points." << endl;
@@ -190,7 +196,6 @@ class Game {
 
 			clear();
 			ASCII.gameLogo();
-			cout << "\n";
 			cout << "   Final Score: " << score << endl << endl;
 			cout << "   Would you like to save your score? (Y/N)" << endl;
 			char saveScore = getch();
@@ -198,7 +203,6 @@ class Game {
 			if (tolower(saveScore) == 'y') {
 				clear();
 				ASCII.gameLogo();
-				cout << "\n";
 				Score.save(initials, score);
 				cout << "   Score Saved! Returning to Main Menu...";
 				sleep(3);
@@ -206,7 +210,6 @@ class Game {
 			else {
 				clear();
 				ASCII.gameLogo();
-				cout << "\n";
 				cout << "   Score Discarded. Returning to Main Menu...";
 				sleep(3);
 			}
@@ -217,7 +220,41 @@ class Game {
 /* MENUS */
 
 void devMenu() {
+	ASCII ASCII;
+	Score Score;
 
+	while (bool hold = true) {
+		clear();
+		ASCII.devLogo();
+
+		cout << "   P: New Game\n";
+		cout << "   S: Scoreboard\n";
+		cout << "   E: Exit Game\n";
+
+		cout << "\n";
+		char uChoice = getch();
+
+		switch (uChoice)
+		{
+		case 'p':
+			break;
+		case 's':
+			break;
+		case 'e':
+			clear();
+			ASCII.devLogo();
+			hold = false;
+			cout << "   Returning to Main Menu...";
+			sleep(3);
+			break;
+		default:
+			clear();
+			ASCII.devLogo();
+			cout << "   Invalid Option. Try Again";
+			sleep(1);
+			break;
+		}
+	}
 }
 
 void mainMenu() {
