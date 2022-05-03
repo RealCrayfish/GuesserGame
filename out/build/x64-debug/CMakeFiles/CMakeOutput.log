@@ -50,16 +50,16 @@ The CXX compiler identification is MSVC, found in "D:/MY STUFF/Code/CPP/GuesserG
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: D:/MY STUFF/Code/CPP/GuesserGame/out/build/x64-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_474bc && [1/2] Building C object CMakeFiles\cmTC_474bc.dir\CMakeCCompilerABI.c.obj
-[2/2] Linking C executable cmTC_474bc.exe
+Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_0f203 && [1/2] Building C object CMakeFiles\cmTC_0f203.dir\CMakeCCompilerABI.c.obj
+[2/2] Linking C executable cmTC_0f203.exe
 
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: D:/MY STUFF/Code/CPP/GuesserGame/out/build/x64-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_5f3dc && [1/2] Building CXX object CMakeFiles\cmTC_5f3dc.dir\CMakeCXXCompilerABI.cpp.obj
-[2/2] Linking CXX executable cmTC_5f3dc.exe
+Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_4296f && [1/2] Building CXX object CMakeFiles\cmTC_4296f.dir\CMakeCXXCompilerABI.cpp.obj
+[2/2] Linking CXX executable cmTC_4296f.exe
 
 
 

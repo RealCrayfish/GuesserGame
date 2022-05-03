@@ -14,7 +14,7 @@ int MAX;
 int score;
 
 void clear() {
-	system("cls");
+	cout << "\x1B[2J\x1B[H";
 }
 
 void sleep(int time) {
@@ -218,6 +218,7 @@ class Game {
 
 /* DEV MODE */
 
+
 class Dev {
 	ASCII ASCII;
 
@@ -260,8 +261,8 @@ class Dev {
 			getline(cin, strID);
 			int ID = stoi(strID);
 
-			auto test = devScores[ID];
-			test.erase("score");
+			cout << devScores[ID];
+			sleep(1);
 		}
 
 		void devMenu() {
