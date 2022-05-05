@@ -280,10 +280,14 @@ class Dev {
 				ASCII.devLogo();
 				string fUsername;
 				string fStrScore;
+				ofstream optionsOfFile("assets/options.rcf");
+				ofstream scoreOfFile("assets/scoreboard.rcf");
 
 				cout << "   N: Number Range\n";
 				cout << "   S: Scoreboard\n";
 				cout << "   F: Create Fake Score\n";
+				cout << "   A: Re-Generate Assets Files (wipes previous data)\n";
+				cout << "   H: Answer Viewer\n";
 				cout << "   E: Exit Dev Mode\n";
 
 				cout << "\n";
@@ -310,6 +314,17 @@ class Dev {
 					cout << "   Fake Score Saved";
 					sleep(3);
 					break;
+				case 'a':
+					clear();
+					ASCII.devLogo();
+
+					filesystem::create_directories("assets");
+					optionsOfFile << "{\"numRange\": {\"max\": 10, \"min\": 1}}"_json.dump(4);
+					scoreOfFile << "[]"_json.dump(4);
+
+					cout << "Generated Assets...";
+					sleep(3);
+					break;
 				case 'e':
 					clear();
 					ASCII.devLogo();
@@ -318,6 +333,13 @@ class Dev {
 					sleep(3);
 					return;
 					break;
+				case 'h':
+					clear();
+					ASCII.devLogo();
+					cout << "Enabled Answer View...";
+					dev_viewNumber = true;
+					sleep(3);
+					break;
 				default:
 					clear();
 					ASCII.devLogo();
@@ -325,6 +347,9 @@ class Dev {
 					sleep(1);
 					break;
 				}
+
+				optionsOfFile.close();
+				scoreOfFile.close();
 			}
 		}
 };
