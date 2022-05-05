@@ -8,6 +8,8 @@ using json = nlohmann::json;
 
 /* GUESSERGAME */
 
+bool dev_viewNumber = false;
+
 int MIN;
 int MAX;
 
@@ -128,6 +130,9 @@ class Game {
 				clear();
 				ASCII.gameLogo();
 
+				if (dev_viewNumber) {
+					cout << "   Answer: " << cAns << endl;
+				}
 				cout << "   Guess a number between " << MIN << " and " << MAX << endl << endl << "   ";
 
 				string uString;
@@ -218,9 +223,9 @@ class Game {
 
 /* DEV MODE */
 
-
 class Dev {
 	ASCII ASCII;
+	Score Score;
 
 	public:
 		void numRange() {
@@ -243,7 +248,7 @@ class Dev {
 			ofstream optionsOfFile("assets/options.rcf"); optionsOfFile << devOptions.dump(4); optionsOfFile.close();
 		}
 		void scoreboard() {
-			ifstream scoreFile("assets/scoreboard.rcf"); json devScores = json::parse(scoreFile); scoreFile.close();
+			ifstream scoreIfFile("assets/scoreboard.rcf"); json devScores = json::parse(scoreIfFile); scoreIfFile.close();
 			string hold;
 
 			clear();
@@ -261,8 +266,11 @@ class Dev {
 			getline(cin, strID);
 			int ID = stoi(strID);
 
-			cout << devScores[ID];
 			sleep(1);
+			devScores.erase(ID);
+			ofstream scoreOfFile("assets/scoreboard.rcf"); scoreOfFile << devScores.dump(4); scoreOfFile.close();
+
+			Score.board();
 		}
 
 		void devMenu() {
@@ -270,9 +278,12 @@ class Dev {
 			while (bool hold = true) {
 				clear();
 				ASCII.devLogo();
+				string fUsername;
+				string fStrScore;
 
 				cout << "   N: Number Range\n";
 				cout << "   S: Scoreboard\n";
+				cout << "   F: Create Fake Score\n";
 				cout << "   E: Exit Dev Mode\n";
 
 				cout << "\n";
@@ -285,6 +296,19 @@ class Dev {
 					break;
 				case 's':
 					scoreboard();
+					break;
+				case 'f':
+					clear();
+					ASCII.devLogo();
+					int fScore;
+					cout << "   Enter Fake Username: ";
+					getline(cin, fUsername);
+					cout << "   Enter Fake Score: ";
+					getline(cin, fStrScore);
+					fScore = stoi(fStrScore);
+					Score.save(fUsername, fScore);
+					cout << "   Fake Score Saved";
+					sleep(3);
 					break;
 				case 'e':
 					clear();
