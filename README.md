@@ -1,5 +1,5 @@
 # GuesserGame
-A project that I am working on where I try to see how far I can take a simple number guessing game
+A project that I did where I try to see how far I can take a simple number guessing game
 
 ## Info
 The app is currently using CMake configured to use C++17.
