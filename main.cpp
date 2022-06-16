@@ -1,6 +1,6 @@
-﻿// GuesserGame.cpp : The app core.
+// GuesserGame.cpp : The app core.
 
-#include "GuesserGame.h";
+#include "main.h"
 
 using namespace std;
 using namespace chrono;

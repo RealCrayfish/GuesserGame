@@ -1,4 +1,4 @@
-﻿// GuesserGame.h : Core header.
+// GuesserGame.h : Core header.
 
 #pragma once
 
