@@ -1,3 +1,4 @@
+.vscode
 bin
 SDL_STUFF_FOR_VSCODE
-Makefile
+*.o

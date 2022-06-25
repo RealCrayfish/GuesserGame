@@ -1,39 +1,47 @@
+// Include SDL
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-#include <iostream>
+
+// Include standard libraries
 #include <stdio.h>
+#include <iostream>
 
+// Extra inclused
 #include "RenderWindow.hpp"
+#include "EventHandler.hpp"
 
-int main (int argc, char* argv[]) {
-    if ( SDL_Init( SDL_INIT_VIDEO ) > 0 )
+void close() {
+    // Quits SDL subsystems
+    IMG_Quit();
+    SDL_Quit();
+}
+
+int main(int argc, char* argv[]) {
+    if ( SDL_Init(SDL_INIT_VIDEO) != 0 )
         printf( "SDL failed to initialise! SDL Error: %s\n", SDL_GetError() );
-    if ( !IMG_Init( IMG_INIT_PNG ) )
-        printf( "SDL_image has failed to initialise! SDL_image Error: %s\n", IMG_GetError() );
+    if ( !IMG_Init(IMG_INIT_PNG) )
+        printf( "SDL_image failed to initialise! SDL_image Error: %s\n", SDL_GetError() );
 
-    RenderWindow window("LearnSDL v1.0", 1280, 720);
+    // Create window
+    RenderWindow window( "GuesserGame SDL v1.0", 1280, 720 );
 
-    SDL_Texture* grassTexture = window.loadTexture( "res/gfx/ground_grass_1.png" );
-
-    bool gameRunning = true;
-    SDL_Event event;
-
-    while ( gameRunning ) {
-        while ( SDL_PollEvent( &event ) > 0 ) {
-            if ( event.type == SDL_QUIT ) gameRunning = false;
-        }
+    // Game Loop
+    bool quit = false;
+    while ( !quit ) {
+        EventHandler::update( quit );
 
         window.clear();
-        window.render(grassTexture, 32, 32, 32, 32);
+
+        window.mainMenu( quit );
+
         window.display();
 
-        // Keep the game to 20 TPS
-        SDL_Delay(50);
+        // Game update limiter to 100tps & 100fps because im to lazy to do it the actual way
+        SDL_Delay(10);
     }
 
-
+    // Clean up and close
     window.cleanUp();
-    SDL_Quit();
-
+    close();
     return 0;
 }
