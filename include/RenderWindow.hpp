@@ -3,6 +3,7 @@
 // Include SDL
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
 
 // Include standard libraries
 #include <stdio.h>
@@ -18,6 +19,7 @@ class RenderWindow {
         void display();
 
         SDL_Texture* loadTexture( const char* path );
+        SDL_Texture* textureFromFont( TTF_Font* fromFont , const char* text ); // idk why but i decided to give font a weird name
 
         void mainMenu( bool &quit, int &levelSelector );
         void scoreboard( bool &quit, int &levelSelector );
@@ -29,4 +31,6 @@ class RenderWindow {
         SDL_Window* window;
         // Game renderer
         SDL_Renderer* renderer;
+        // Game font
+        TTF_Font* font;
 };
