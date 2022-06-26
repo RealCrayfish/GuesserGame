@@ -19,7 +19,8 @@ class RenderWindow {
 
         SDL_Texture* loadTexture( const char* path );
 
-        void mainMenu( bool &quit );
+        void mainMenu( bool &quit, int &levelSelector );
+        void scoreboard( bool &quit, int &levelSelector );
     private:
         // Screen scale factor
         float SCREEN_SCALE = 1.0f;

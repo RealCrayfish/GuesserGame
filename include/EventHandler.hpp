@@ -10,5 +10,6 @@
 namespace EventHandler {
     void update( bool &quit );
 
-    void mainMenu( bool &quit, int &menuSelector ); 
+    void mainMenu( bool &quit, bool &levelQuit, int &levelSelector, int &menuSelector ); 
+    void scoreboard( bool &quit, bool &levelQuit, int &levelSelector );
 }

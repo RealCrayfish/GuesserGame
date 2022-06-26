@@ -25,6 +25,20 @@ int main(int argc, char* argv[]) {
     // Create window
     RenderWindow window( "GuesserGame SDL v1.0", 1280, 720 );
 
+    // Levels
+    enum LEVELS {
+        LEVEL_MAIN_MENU,
+        LEVEL_SCOREBOARD,
+        LEVEL_OPTIONS,
+        LEVEL_START,
+        LEVEL_INGAME,
+        LEVEL_FINISH,
+        LEVEL_DEV_MENU
+    };
+
+    // Level selector
+    int levelSelector = LEVEL_MAIN_MENU;
+
     // Game Loop
     bool quit = false;
     while ( !quit ) {
@@ -32,7 +46,18 @@ int main(int argc, char* argv[]) {
 
         window.clear();
 
-        window.mainMenu( quit );
+        // Select level based on level selector
+        switch (levelSelector)
+        {
+        case LEVEL_MAIN_MENU:
+            window.mainMenu( quit, levelSelector );
+            break;
+        case LEVEL_SCOREBOARD:
+            window.scoreboard( quit, levelSelector );
+            break;
+        default:
+            break;
+        }
 
         window.display();
 

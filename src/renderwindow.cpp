@@ -84,7 +84,12 @@ SDL_Texture* RenderWindow::loadTexture( const char* path ) {
 
 // Actually rendering stuff ig
 
-void RenderWindow::mainMenu( bool &quit ) {
+// Main Menu
+void RenderWindow::mainMenu( bool &quit, int &levelSelector ) {
+    // Main Menu quit flag
+    bool levelQuit = false;
+
+    // Menu stuff ig
     SDL_Texture* guesserGameLogo = loadTexture( "res/gfx/guesser_game.png" );
     enum MENU_BUTTONS {
         BUTTON_START,
@@ -116,9 +121,9 @@ void RenderWindow::mainMenu( bool &quit ) {
     // render( quitButton, 400, 600, 480, 100 );
 
     // Menu loop
-    while ( !quit ) {
+    while ( !levelQuit ) {
         // Event handler for main menu
-        EventHandler::mainMenu( quit, menuSelector );
+        EventHandler::mainMenu( quit, levelQuit, levelSelector, menuSelector );
 
         // Clear renderer
         clear();
@@ -148,6 +153,37 @@ void RenderWindow::mainMenu( bool &quit ) {
         default:
             break;
         }
+
+        display();
+    }
+}
+
+// Scoreboard
+void RenderWindow::scoreboard( bool &quit, int &levelSelector ) {
+    // Main Menu quit flag
+    bool levelQuit = false;
+
+    // Menu stuff ig
+    SDL_Texture* guesserGameLogo = loadTexture( "res/gfx/guesser_game.png" );
+
+    // Load media for each button
+    SDL_Texture* startButton = loadTexture( "res/gfx/start.png" );
+    SDL_Texture* optionsButton = loadTexture( "res/gfx/options.png" );
+    SDL_Texture* quitButton = loadTexture( "res/gfx/quit.png" );
+
+    // Menu loop
+    while ( !levelQuit ) {
+        // Event handler for main menu
+        EventHandler::scoreboard( quit, levelQuit, levelSelector );
+
+        // Clear renderer
+        clear();
+
+        // Render stuff -- add 130 each button
+        render( guesserGameLogo, 320, 30, 640, 150 );
+        render( startButton, 400, 210, 480, 100 );
+        render( optionsButton, 400, 470, 480, 100 );
+        render( quitButton, 400, 600, 480, 100 );
 
         display();
     }
