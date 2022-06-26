@@ -1,2 +1,2 @@
 # GuesserGame
-A project that I am working on where I try to see how far I can take a simple number guessing game
+GuesserGame is a project that I am working on where my goal is to push what I think a guesser game is to it's limits. Currently, I am re-making the game in C++ using a library called [SDL (Simple DirectMedia Layer)](https://www.libsdl.org/). After that I will be thinking of different ideas that I could do to improve and change the game. However my goal is set on getting it re-made first.
